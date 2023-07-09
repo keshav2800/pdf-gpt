@@ -26,7 +26,7 @@ export default async function handler(
   const sanitizedQuestion = question.trim().replaceAll('\n', ' ');
 
   try {
-    const index = pinecone.Index('gpt-pdf');
+    const index = pinecone.Index(PINECONE_INDEX_NAME);
 
     /* create vectorstore*/
     const vectorStore = await PineconeStore.fromExistingIndex(
@@ -34,7 +34,7 @@ export default async function handler(
       {
         pineconeIndex: index,
         textKey: 'text',
-        namespace: 'test-pdf', //namespace comes from your config folder
+        namespace: PINECONE_NAME_SPACE, //namespace comes from your config folder
       },
     );
 
