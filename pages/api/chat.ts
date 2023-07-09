@@ -26,7 +26,7 @@ export default async function handler(
   const sanitizedQuestion = question.trim().replaceAll('\n', ' ');
 
   try {
-    const index = pinecone.Index(PINECONE_INDEX_NAME);
+    const index = pinecone.Index('gpt-pdf');
 
     /* create vectorstore*/
     const vectorStore = await PineconeStore.fromExistingIndex(
